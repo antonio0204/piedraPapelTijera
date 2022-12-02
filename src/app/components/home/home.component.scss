@@ -11,7 +11,7 @@
 
 .info-game {
     background-color: transparent;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 24px;
 }
 .choices {
@@ -42,7 +42,7 @@
 
 /* Marcador */
 .score-board{
-	width: 200px;
+	width: 300px;
 	border:2px solid white;
 	text-align: center;
 	margin:20px auto; /*top and bottom 20 px and centre it*/

@@ -1,6 +1,11 @@
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Piedra Papel o Tijera!</a>
+      <div *ngIf="authService.user$ | async as user">
+        <div style="display: flex; align-content: center;">
+          <img [src]="user.picture" height="50px">
+          <a class="navbar-brand nameNavbar" >{{ user.given_name }}</a>
+        </div>
+      </div>`
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>

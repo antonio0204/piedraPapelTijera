@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '@auth0/auth0-angular';
 import { HomeComponent } from './components/home/home.component';
 import { InstructionsComponent } from './components/instructions/instructions.component';
 import { LoginComponent } from './components/login/login.component';
@@ -13,15 +14,18 @@ const routes: Routes = [
     component: LoginComponent 
   },
   { path: 'home', 
-    component: HomeComponent 
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'instrucciones',
-    component: InstructionsComponent
+    component: InstructionsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'rankin',
     component: RankinComponent,
+    canActivate: [AuthGuard]
   },
   { path: '**',
     redirectTo: 'login', 

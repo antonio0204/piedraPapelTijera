@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+import { UsersService } from '../../services/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar-sidebars',
@@ -7,15 +8,18 @@ import { AuthService } from '@auth0/auth0-angular';
   styleUrls: ['./navbar-sidebars.component.scss']
 })
 export class NavbarSidebarsComponent implements OnInit {
+  
+  name: any = '';
+  points: any;
 
-  constructor(public authService: AuthService) {}
+  constructor(readonly user: UsersService, readonly route: Router) {}
 
   ngOnInit(){
+    this.name = sessionStorage.getItem('nameApp');
+    this.points = sessionStorage.getItem('points');
   }
-
   logout() {
-    this.authService.logout();
-    sessionStorage.removeItem('loggedIn');
+    sessionStorage.clear();
+    this.route.navigateByUrl('/login');
   }
-
 }

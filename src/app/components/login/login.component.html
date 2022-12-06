@@ -3,15 +3,23 @@
     <div class="login-main__childrenL">
       <h1 class="title-login">¡Hola!</h1>
       <p><strong class="subtitle-login">Bienvenido al juego PIEDRA PAPEL O TIJERA,</strong><br>aquí podrás divertirte con tus amigos<br>o retarte a ti mismo!.</p>
-      <button type="button" class="btn btn-dark" (click)="login()">Ingresar</button>
+    <form [formGroup]="formGroup">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1" for="name">Nickname</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Nickname" aria-label="Username" aria-describedby="basic-addon1" formControlName="name">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1" for="password">Password</span>
+        </div>
+        <input aria-describedby="passwordHelpInline" type="password" class="form-control" placeholder="Password" formControlName="password" >
+      </div>
+    </form>
+      <button type="submit" class="btn btn-dark" [disabled]="formGroup.invalid" (click)="login()">Ingresar</button>
+      <br>
+      <button type="submit" class="btn btn-dark" [disabled]="formGroup.invalid" (click)="register()">registrarse</button>
     </div>
-  </div>
-
-  <div class="login-main__righth">
-    <img
-      class="img-bkg"
-      src="../../../assets/piedraPapelTijera.jpg"
-      alt=""
-    />
   </div>
 </section>

@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  host: 'https://demo5888152.mockable.io/register',
-  login: '/api/v1/login',
-  register: 'register'
+  host: 'https://6387dc44d94a7e50408edd35.mockapi.io/api/v1',
+  login: '/users',
+  register: '/users'
 };

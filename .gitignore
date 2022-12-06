@@ -11,6 +11,8 @@
 /node_modules
 /.angular
 /dist
+/docs
+/deploy
 
 # profiling files
 chrome-profiler-events*.json

@@ -1,4 +1,8 @@
 <app-navbar-sidebars></app-navbar-sidebars>
 
-<p class="fw-bold fs-1 comingSoon">Proximamente!</p>
+<ul class="list-group container px-3 py-5 topContainer rankin">
+    <div class="col-md-12">
+        <li class="list-group-item" *ngFor="let user of users" >Puesto {{user.name}}</li>
+    </div>
+</ul>
 

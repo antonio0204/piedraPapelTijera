@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { UsersService } from '../../services/users.service';
 
 
 
@@ -11,19 +13,37 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class LoginComponent implements OnInit {
   
-  isAuthenticaed = false;
+  public formGroup: FormGroup =  new FormGroup({});
 
-  constructor(private router: Router, readonly authService: AuthService) {}
-  
+  constructor(private router: Router, readonly authService: AuthService, public userService: UsersService)
+  {}
+
   ngOnInit(){
-    this.authService.isAuthenticated$.subscribe((isAuthenticated) => {
-      if(isAuthenticated){
+    this.buildForm();
+  }
+  private buildForm(){
+    this.formGroup = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(4)])
+    });
+  }
+  login() {
+    const user = {name: this.formGroup.value.name.toLowerCase(), password: this.formGroup.value.password};
+    this.userService.login(user).subscribe( data => {
+      if(data.name === null || data.name === undefined){
+        alert('registrate')
+      }
+      else{
         this.router.navigateByUrl('/home');
       }
     });
   }
-  
-  login() {
-    this.authService.loginWithRedirect();
+  register(){
+    const user = {name: this.formGroup.value.name, password: this.formGroup.value.password};
+    this.userService.register(user).subscribe( data => {
+      if(data === true){
+        alert('se guardo exitosamente, puedes Iniciar sesion!')
+      }
+    });
   }
 }

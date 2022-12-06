@@ -11,26 +11,25 @@ export class HomeComponent implements OnInit {
   result: string;
   pointsUser = 0;
   pointsComp =  0;
+  name: any = '';
 
   constructor(private playGame: GameService) {
     this.result = 'Esperando jugada...';
   }
 
-  ngOnInit(): void {
-    console.log(this.pointsUser);
+  ngOnInit(){
+    this.name = sessionStorage.getItem('nameApp');
   }
 
-  /*
-  s: tijeras
-  p: papel
-  r: piedra
-  */
+  /* s: tijeras, p: papel, r: piedra */
 
   play(choice: string): void {
     const result = this.playGame.play(choice);
     this.result = result;
     if (result === 'Ganaste!') {
+      let points = this.pointsUser++;
       this.pointsUser++;
+      sessionStorage.setItem('points', JSON.stringify(points));
     } else if (result === 'Perdiste!') {
       this.pointsComp++;
     }

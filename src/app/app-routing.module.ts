@@ -15,17 +15,17 @@ const routes: Routes = [
   },
   { path: 'home', 
     component: HomeComponent,
-    canActivate: [AuthGuard]
+    canActivate: []
   },
   {
     path: 'instrucciones',
     component: InstructionsComponent,
-    canActivate: [AuthGuard]
+    canActivate: []
   },
   {
     path: 'rankin',
     component: RankinComponent,
-    canActivate: [AuthGuard]
+    canActivate: []
   },
   { path: '**',
     redirectTo: 'login', 

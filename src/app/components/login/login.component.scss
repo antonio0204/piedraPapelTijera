@@ -5,8 +5,8 @@
     background-color: #FFFFFF;
     padding: 145px 0;
     .login-main__lefth{
-        width: 40%;
-        min-width: 400px;
+        width: 50%;
+        min-width: 250px;
         display: flex;
         align-items: center;
         .login-main__childrenL{
@@ -49,4 +49,8 @@
 }
 .subtitle-login{
     font-size: 1.8rem;
+}
+.img-bkg{
+    width: auto;
+    height: auto;
 }
